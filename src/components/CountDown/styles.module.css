@@ -1,6 +1,6 @@
 .container {
   /* "clamp(valor-mínimo, valor-ideal, valor-máximo)" -> responsividade na fonte */
-  font-size: clamp(8rem, 25vw, 16rem);
+  font-size: clamp(7rem, 25vw, 16rem);
   text-align: center;
   font-weight: bold;
   line-height: 1.2;
