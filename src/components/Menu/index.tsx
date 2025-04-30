@@ -41,7 +41,7 @@ export function Menu() {
   // hook para evitar efeitos colaterias
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    // guardar o valor de theme no storage, o primeiro prametro é a chave e outro é o valor que vai ser guardado
+    // guardar o valor de theme no storage, o primeiro parametro é a chave e outro é o valor que vai ser guardado
     localStorage.setItem('theme', theme);
 
     // limpar o lixo da pagina - nesse component é opcional essa limpeza

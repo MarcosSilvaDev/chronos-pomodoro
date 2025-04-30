@@ -4,7 +4,7 @@ export type TaskStateModel = {
   tasks: TaskModel[];
   secondsRemaining: number; // contador => countDown(componente)
   formattedSecondsRemaining: string; // conversão do secondsRemaining em string
-  activeTask: TaskModel;
+  activeTask: TaskModel | null;
   currentCycle: number | null; // 1 a 8
   config: {
     workTime: number;
