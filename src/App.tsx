@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 
 import './styles/global.css';
 import './styles/theme.css';
+import { TaskContext } from './contexts/TaskContext';
 
 const initialState: TaskStateModel = {
   tasks: [],
@@ -21,7 +22,13 @@ const initialState: TaskStateModel = {
 function App() {
   const [state, setState] = useState(initialState);
 
-  return <Home state={state} setState={setState} />;
+  return (
+    // O provider requer um "value", que é para prover os valores para o contexto de todos
+    // os componentes que estão dentro do provider
+    <TaskContext.Provider value={{ outracoisa: 124 }}>
+      <Home />;
+    </TaskContext.Provider>
+  );
 }
 
 export default App;
