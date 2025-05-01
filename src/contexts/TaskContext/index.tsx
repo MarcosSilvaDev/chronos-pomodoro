@@ -1,15 +1,42 @@
 import { createContext } from 'react';
+import { TaskStateModel } from '../../models/TaskStateModel';
 
-export const TaskContext = createContext({
+const initialState: TaskStateModel = {
+  tasks: [],
+  secondsRemaining: 0,
+  formattedSecondsRemaining: '00:00',
+  activeTask: null,
+  currentCycle: 0,
+  config: {
+    workTime: 25,
+    shortBreakTime: 5,
+    longBreakTime: 15,
+  },
+};
+
+type TaskContextProps = {
+  state: TaskStateModel;
+  setState: React.Dispatch<React.SetStateAction<TaskStateModel>>;
+};
+
+const initialContextValue = {
+  state: initialState,
+  setState: () => {},
+};
+
+export const TaskContext = createContext<TaskContextProps>(
+  initialContextValue,
   // valor inicial caso não use o provider
-  chave: 123,
-});
+);
 
-// para ter um contexto precisa:
-/*
-  1. criar um contexto
-  2. esse contexto precisa de um valor inicial e só sera usado se não usar o
-  provider
-  3. sempre iremos usar o provider
-  4. o valor importante é o que vai no "value" do provider
-*/
+type TaskContextProviderProps = {
+  children: React.ReactNode;
+};
+
+export function TaskContextProvider({ children }: TaskContextProviderProps) {
+  return (
+    <TaskContext.Provider value={initialContextValue}>
+      {children}
+    </TaskContext.Provider>
+  );
+}
