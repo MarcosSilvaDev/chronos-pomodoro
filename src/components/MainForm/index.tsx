@@ -20,8 +20,10 @@ export function MainForm() {
           labelText='task'
           id='meuInput'
           type='text'
+          // usa as linhas 24 e 25 quando quer o componente renderize em tempo real que digitar no input
           value={taskName}
           onChange={e => setTaskName(e.target.value)} //controla o input
+          /// usa-se useRef quando não importa o que o usuario digita
           ref={taskNameInput} // manda o input para o "taskNameInput"
         />
       </div>
