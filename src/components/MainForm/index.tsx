@@ -2,7 +2,7 @@ import { PlayCircleIcon } from 'lucide-react';
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { TaskModel } from '../../models/TaskModel';
 import { getNextCycle } from '../../utils/getNextCycle';
@@ -64,6 +64,7 @@ export function MainForm() {
           type='text'
           /// usa-se useRef quando não importa o que o usuario digita
           ref={taskNameInput} // manda o input para o "taskNameInput"
+          disabled={!!state.activeTask}
         />
       </div>
 
@@ -71,9 +72,11 @@ export function MainForm() {
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
 
-      <div className='formRow'>
-        <Cycles />
-      </div>
+      {(state.currentCycle ?? 0) > 0 && (
+        <div className='formRow'>
+          <Cycles />
+        </div>
+      )}
 
       <div className='formRow'>
         <DefaultButton icon={<PlayCircleIcon />} />
