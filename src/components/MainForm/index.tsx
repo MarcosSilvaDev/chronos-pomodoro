@@ -1,4 +1,4 @@
-import { PlayCircleIcon } from 'lucide-react';
+import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
@@ -55,6 +55,18 @@ export function MainForm() {
     });
   }
 
+  function handleInterruptTask() {
+    setState(prevState => {
+      return {
+        ...prevState,
+        config: { ...prevState.config },
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+      };
+    });
+  }
+
   return (
     <form onSubmit={handleCreateNewTask} className='form' action=''>
       <div className='formRow'>
@@ -64,7 +76,7 @@ export function MainForm() {
           type='text'
           /// usa-se useRef quando não importa o que o usuario digita
           ref={taskNameInput} // manda o input para o "taskNameInput"
-          disabled={!!state.activeTask}
+          disabled={!!state.activeTask} // for diferente de null
         />
       </div>
 
@@ -79,7 +91,27 @@ export function MainForm() {
       )}
 
       <div className='formRow'>
-        <DefaultButton icon={<PlayCircleIcon />} />
+        {!state.activeTask && ( //se activeTask  = null
+          <DefaultButton
+            aria-label='Iniciar nova tarefa'
+            title='Iniciar nova tarefa'
+            type='submit'
+            icon={<PlayCircleIcon />}
+            key='botao_submit'
+          />
+        )}
+
+        {!!state.activeTask && (
+          <DefaultButton
+            aria-label='Parar tarefa'
+            title='Parar tarefa'
+            type='button'
+            color='red'
+            icon={<StopCircleIcon />}
+            onClick={handleInterruptTask}
+            key='botao_button' //evita o submit
+          />
+        )}
       </div>
     </form>
   );
