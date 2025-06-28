@@ -3,11 +3,14 @@ import { Home } from './pages/Home';
 
 import './styles/global.css';
 import './styles/theme.css';
+import { MessageContainer } from './components/MessageContainer';
 
 function App() {
   return (
     <TaskContextProvider>
-      <Home />;
+      <MessageContainer>
+        <Home />;
+      </MessageContainer>
     </TaskContextProvider>
   );
 }
