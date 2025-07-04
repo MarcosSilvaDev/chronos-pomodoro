@@ -15,6 +15,7 @@ export function MainForm() {
   const { state, dispatch } = useTaskContext();
   // useRef previne renderizaçoes desnecesserias
   const taskNameInput = useRef<HTMLInputElement>(null);
+  const lastTaskName = state.tasks[state.tasks.length - 1]?.name || '';
 
   //ciclos
   const nextCycle = getNextCycle(state.currentCycle ?? 0);
@@ -64,6 +65,7 @@ export function MainForm() {
           /// usa-se useRef quando não importa o que o usuario digita
           ref={taskNameInput} // manda o input para o "taskNameInput"
           disabled={!!state.activeTask} // for diferente de null
+          defaultValue={lastTaskName}
         />
       </div>
 
