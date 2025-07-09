@@ -46,7 +46,7 @@ export function MainForm() {
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
 
-    showMessage.sucess('Tarefa iniciada');
+    showMessage.success('Tarefa iniciada');
   }
 
   function handleInterruptTask() {
@@ -59,12 +59,11 @@ export function MainForm() {
     <form onSubmit={handleCreateNewTask} className='form' action=''>
       <div className='formRow'>
         <DefaultInput
-          labelText='task'
+          labelText='Tarefa'
           id='meuInput'
           type='text'
-          /// usa-se useRef quando não importa o que o usuario digita
-          ref={taskNameInput} // manda o input para o "taskNameInput"
-          disabled={!!state.activeTask} // for diferente de null
+          ref={taskNameInput}
+          disabled={!!state.activeTask}
           defaultValue={lastTaskName}
         />
       </div>
@@ -79,9 +78,8 @@ export function MainForm() {
         </div>
       )}
 
-      {/* lógica de troca de botão ao mudar o status do activeTask */}
       <div className='formRow'>
-        {!state.activeTask && ( //se activeTask  = null
+        {!state.activeTask && (
           <DefaultButton
             aria-label='Iniciar nova tarefa'
             title='Iniciar nova tarefa'
