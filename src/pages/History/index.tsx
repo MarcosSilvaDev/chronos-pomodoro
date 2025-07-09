@@ -41,6 +41,10 @@ export function History() {
   }, [state.tasks]);
 
   useEffect(() => {
+    document.title = 'Histórico - Chronos Pomodoro';
+  }, []);
+
+  useEffect(() => {
     if (!confirmClearHistory) return;
 
     dispatch({ type: TaskActionTypes.RESET_TASK });
@@ -124,7 +128,7 @@ export function History() {
 
               <tbody>
                 {sortTaskOptions.tasks.map(task => {
-                  const taskDicionary = {
+                  const taskDictionary = {
                     workTime: 'Foco',
                     shortBreakTime: 'Descanso curto',
                     longBreakTime: 'Descanso longo',
@@ -135,7 +139,7 @@ export function History() {
                       <td>{task.duration}min</td>
                       <td>{formartDate(task.startDate)}</td>
                       <td>{getTaskStatus(task, state.activeTask)}</td>
-                      <td>{task.type}</td>
+                      <td>{taskDictionary[task.type]}</td>
                     </tr>
                   );
                 })}
