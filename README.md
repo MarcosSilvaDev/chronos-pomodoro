@@ -28,14 +28,14 @@ Você pode ver a versão hospedada em:
 
 ## 🚀 Como executar localmente
 
--> Clone do repositorio:
+* Clone do repositorio:
 git clone https://github.com/MarcosSilvaDev/chronos-pomodoro.git
 
--> Instalar dependências:
-npm install
+* Instalar dependências:
+_npm install_
 
--> Iniciar o servidor de desenvolvimento:
-npm run dev 
+* Iniciar o servidor de desenvolvimento:
+_npm run dev_
 
 ✅ Uso sugerido
 
@@ -47,4 +47,3 @@ npm run dev
 
 * Use para estudos, trabalho, ou qualquer atividade que se beneficie do método Pomodoro.
 
-## Execução do projeto
